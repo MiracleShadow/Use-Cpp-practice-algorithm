@@ -1,5 +1,4 @@
 {
-    "python.pythonPath": "H:\\Anaconda3\\python.exe",
     "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
     "editor.formatOnType": true, // 输入时就进行格式化，默认触发字符较少，分号可以触发
     "editor.snippetSuggestions": "top", // snippets代码优先显示补全
