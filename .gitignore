@@ -1,11 +1,1 @@
-**.exe
-
-# vscode
-.vscode
-
-# test files
-a.*
-
-# data files
-**.in
-**.out
+*.exe
