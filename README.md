@@ -11,3 +11,7 @@ Required
 Optional
 * Markdown All in One
 * Chinese (Simplified) Language Pack for Visual Studio Code
+
+## TODO
+- [ ] append Elementary Data Structures
+- [ ] timer.cpp guide
