@@ -1,1 +1,8 @@
-*.exe
+# executable file
+**.exe
+# IO file
+**.in
+**.out
+# test file
+a.*
+
