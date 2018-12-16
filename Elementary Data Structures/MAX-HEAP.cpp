@@ -2,15 +2,15 @@
 #include <cmath>
 #include <vector>
 
-int PARENT(int i) {
+inline int PARENT(int i) {
     return floor(i/2);
 }
 
-const int LEFT(int i) {
+inline int LEFT(int i) {
     return i << 1;
 }
 
-const int RIGHT(int i) {
+inline int RIGHT(int i) {
     return (i << 1) + 1;
 }
 
