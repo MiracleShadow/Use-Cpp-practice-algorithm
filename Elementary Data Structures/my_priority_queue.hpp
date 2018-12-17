@@ -13,8 +13,6 @@ inline size_t LEFT(size_t i) { return i * 2 + 1;}
 
 inline size_t RIGHT(size_t i) { return i * 2 + 2;}
 
-template <typename T>
-bool compare_com(T a, T b) { return a < b;}
 template <typename T, class Compare>
 void heapify(std::vector<T> &A, size_t i, Compare comp)
 {
@@ -41,7 +39,7 @@ void make_heap(std::vector<T> &A, Compare comp)
     if(A.size() == 0) {
         return;
     }
-    for (size_t i = PARENT(A.size() - 1); i >= 0; --i) {
+    for (int i = PARENT(A.size() - 1); i >= 0; --i) {
         heapify(A, i, comp);
     }
 }
@@ -77,6 +75,21 @@ void pop_heap(std::vector<T> &A, Compare comp)
     heapify(A, 0, comp);
 }
 
+// template <typename T, class Compare>
+// void sort_heap(std::vector<T> &A, Compare comp)
+// {
+//     std::vector<T> B;
+//     make_heap(A, comp);
+    
+//     for(int i = A.size(); i >= 1; --i)
+//     {
+//         B.push_back(A[A.size() - 1]);
+//         A[0] = A[A.size() - 1];
+//         A.pop_back();
+//         heapify(A, 0, comp);
+//     }
+//     A = B;
+// }
 
 template <typename T, 
           typename Container = std::vector<T>, 
@@ -84,17 +97,36 @@ template <typename T,
 class priority_queue
 {
   public:
-    typedef T value_type;
+    typedef typename Container::value_type value_type;
+    typedef typename Container::size_type size_type;
+    typedef typename Container::reference reference;
+    typedef typename Container::const_reference const_reference;
+    
+  private:
+    Container cont_;    //内部容器
+    Compare comp_;      //比较规则
 
-    /*
-        * push对应INSERT
-        * top对应MAXIMUM
-        * pop对应EXTRACT-MAX
-        */
-    priority_queue(const Container &ctnr = Container(), const Compare &comp = Compare())
-        :comp_(comp), cont_(ctnr) {
+  public:
+    priority_queue() :cont_(){}
+
+    // explicit 指定这个构造器只能被明确的调用/使用，不能作为类型转换操作符被隐含的使用
+    explicit priority_queue(const Compare &comp) :cont_(), comp_(comp) {}
+
+    priority_queue(const Container &cont, const Compare &comp)
+        : cont_(cont), comp_(comp) {
         make_heap(cont_, comp_);
     };
+
+    priority_queue(const Container &cont)
+        : cont_(cont) {
+        make_heap(cont_, comp_);
+    };
+
+    /*
+    * push对应INSERT
+    * top对应MAXIMUM
+    * pop对应EXTRACT-MAX
+    */
     size_t size() {
         return cont_.size();
     };
@@ -114,10 +146,6 @@ class priority_queue
             std::cerr << "heap is empty!" << std::endl;
         exit(-1);
     };
-
-  private:
-    Compare comp_; //比较规则
-    Container cont_; //内部容器
 };
 } // namespace miracle_shadow
 
