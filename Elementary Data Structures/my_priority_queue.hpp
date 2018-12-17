@@ -1,14 +1,13 @@
 #ifndef MY_PRIORITY_QUEUE
 #define MY_PRIORITY_QUEUE
 
-#include <cmath>
 #include <functional>
 #include <iostream>
 #include <vector>
 
 namespace miracle_shadow
 {
-inline size_t PARENT(size_t i) { return floor((i - 1) / 2);}
+inline size_t PARENT(size_t i) { return i > 0 ? (i - 1) / 2 : 0;}
 
 inline size_t LEFT(size_t i) { return i * 2 + 1;}
 
@@ -21,10 +20,10 @@ void heapify(std::vector<T> &A, size_t i, Compare comp)
 {
     size_t l = LEFT(i), r = RIGHT(i);
     size_t largest = i;
-    if (l < A.size() && comp(A[l], A[largest])) {
+    if (l < A.size() && comp(A[largest], A[l])) {
         largest = l;
     }
-    if (r < A.size() && comp(A[r], A[largest])) {
+    if (r < A.size() && comp(A[largest], A[r])) {
         largest = r;
     }
     if(largest != i) {
@@ -39,6 +38,9 @@ void heapify(std::vector<T> &A, size_t i, Compare comp)
 template <typename T, class Compare>
 void make_heap(std::vector<T> &A, Compare comp)
 {
+    if(A.size() == 0) {
+        return;
+    }
     for (size_t i = PARENT(A.size() - 1); i >= 0; --i) {
         heapify(A, i, comp);
     }
@@ -72,7 +74,7 @@ void pop_heap(std::vector<T> &A, Compare comp)
     }
     A[0] = A[A.size() - 1];
     A.pop_back();
-    heapify(A, 0);
+    heapify(A, 0, comp);
 }
 
 
@@ -103,13 +105,14 @@ class priority_queue
         push_heap(cont_, v, comp_);
     };
     void pop() {
-        pop_heap(cont_);
+        pop_heap(cont_, comp_);
     };
     value_type top() {
         if(cont_.size() > 0)
             return cont_[0];
         else
             std::cerr << "heap is empty!" << std::endl;
+        exit(-1);
     };
 
   private:
