@@ -75,21 +75,21 @@ void pop_heap(std::vector<T> &A, Compare comp)
     heapify(A, 0, comp);
 }
 
-// template <typename T, class Compare>
-// void sort_heap(std::vector<T> &A, Compare comp)
-// {
-//     std::vector<T> B;
-//     make_heap(A, comp);
+template <typename T, typename Comparator>
+void sort_heap(std::vector<T> &A, Comparator comp)
+{
+    std::vector<T> B;
+    make_heap(A, comp);
     
-//     for(int i = A.size(); i >= 1; --i)
-//     {
-//         B.push_back(A[A.size() - 1]);
-//         A[0] = A[A.size() - 1];
-//         A.pop_back();
-//         heapify(A, 0, comp);
-//     }
-//     A = B;
-// }
+    for(int i = A.size(); i >= 1; --i)
+    {
+        B.push_back(A[0]);
+        A[0] = A[A.size() - 1];
+        A.pop_back();
+        heapify(A, 0, comp);
+    }
+    A = B;
+}
 
 template <typename T, 
           typename Container = std::vector<T>, 

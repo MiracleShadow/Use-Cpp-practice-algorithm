@@ -3,9 +3,9 @@
 #include <functional>
 
 template <typename T>
-struct cmp : std::binary_function<T, T, bool>
+auto cmp(T &a, T &b)
 {
-    bool operator()(T a, T b) const { return a > b; }
+    return a < b;
 };
 
 auto comp = [](const int& lhs, const int& rhs) { return lhs > rhs; };
@@ -46,6 +46,15 @@ int main()
         std::cout << pq_g.top() << " ";
         pq_g.pop();
     }
-
+    using miracle_shadow::sort_heap;
+    vi.clear();
+    for (int i = 0; i < 10; ++i)
+        vi.push_back(rand() % 20);
+    for (int i = 0; i < 10; ++i)
+        std::cout << vi[i] << " ";
+    std::cout << std::endl;
+    sort_heap(vi, comp);
+    for (int i = 0; i < 10; ++i)
+        std::cout << vi[i] << " ";
     return 0;
 }
