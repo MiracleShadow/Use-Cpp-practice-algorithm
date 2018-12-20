@@ -2,12 +2,6 @@
 #include <iostream>
 #include <functional>
 
-template <typename T>
-auto cmp(T &a, T &b)
-{
-    return a < b;
-};
-
 auto comp = [](const int& lhs, const int& rhs) { return lhs > rhs; };
 
 int main()
@@ -46,7 +40,11 @@ int main()
         std::cout << pq_g.top() << " ";
         pq_g.pop();
     }
+    std::cout << std::endl;
+
+    //sort_heap测试
     using miracle_shadow::sort_heap;
+    
     vi.clear();
     for (int i = 0; i < 10; ++i)
         vi.push_back(rand() % 20);
