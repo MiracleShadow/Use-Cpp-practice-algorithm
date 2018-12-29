@@ -1,4 +1,5 @@
 Elementary Data Structures
+- [ ] vector
 - [ ] stack
 - [ ] queue
 - [ ] list
