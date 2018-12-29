@@ -2,8 +2,8 @@
 #define MY_VECTOR
 
 namespace miracle_shadow {
-       template <class T>
-       class vector;
-   }
+    template <class T>
+    class vector;
+};
 
 #endif  // MY_VECTOR

@@ -2,8 +2,8 @@
 #define MY_QUEUE
 
 namespace miracle_shadow {
-       template <class T>
-       class queue;
-   }
+    template <class T>
+    class queue;
+};
 
-#endif  // MY_DEQUE
+#endif // MY_DEQUE
