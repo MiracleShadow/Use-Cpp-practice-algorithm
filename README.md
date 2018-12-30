@@ -16,4 +16,5 @@ Optional
 
 ## TODO
 - [ ] append Elementary Data Structures
+- [ ] append Algorithm
 - [ ] timer.cpp guide
