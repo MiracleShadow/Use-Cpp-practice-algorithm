@@ -80,7 +80,7 @@ bool binary_search(ForwardIterator first, ForwardIterator last, const T &val)
     */
 template <class ForwardIterator, class T>
 std::pair<ForwardIterator, ForwardIterator>
-equal_range(ForwardIterator first, ForwardIterator last, const T &val)
+    equal_range(ForwardIterator first, ForwardIterator last, const T &val)
 {
     ForwardIterator it = miracle_shadow::lower_bound(first, last, val);
     return std::make_pair(it, miracle_shadow::upper_bound(it, last, val));
