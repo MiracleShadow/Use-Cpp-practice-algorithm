@@ -14,7 +14,13 @@ Optional
 * Markdown All in One
 * Chinese (Simplified) Language Pack for Visual Studio Code
 
+## How to calculate program running time
+1. Compile the timer.cpp to get `timer.exe`
+2. Compile your custom code to get the executable, assuming `a.exe`
+3. Open the terminal command line in the current folder and enter `./timer a`
+4. Repeat step 3 multiple times to get more accurate program run time
+
 ## TODO
 - [ ] append Elementary Data Structures
 - [ ] append Algorithm
-- [ ] timer.cpp guide
+- [x] timer.cpp
