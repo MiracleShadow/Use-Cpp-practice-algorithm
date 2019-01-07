@@ -1,7 +1,7 @@
 #ifndef MY_Map
 #define MY_Map
 
-#include <iostream> // use ostream
+#include <iostream> // use std::ostream
 
 namespace miracle_shadow
 {
@@ -25,7 +25,7 @@ class Map
     bool insert(Elem *&root, const KEY &key, const T &data, Elem *lastLeft);
 
     // helper method for print tree
-    void printTree(ostream &out, int level, Elem *p) const;
+    void printTree(std::ostream &out, int level, Elem *p) const;
 
     // common code for deallocation
     void destructCode(Elem *&p);
@@ -108,11 +108,11 @@ class Map
     T &operator[](KEY);
 
     // output the underlying BST
-    ostream &dump(ostream &out) const;
+    std::ostream &dump(std::ostream &out) const;
 };
 
 template <typename KEY, typename T>
-ostream &operator<<(ostream &, const Map<KEY, T> &);
+std::ostream &operator<<(std::ostream &, const Map<KEY, T> &);
 
 template <typename KEY, typename T>
 Map<KEY, T>::Map()
@@ -557,7 +557,7 @@ int Map<KEY, T>::size() const
 }
 
 template <typename KEY, typename T>
-T & ::Map<KEY, T>::operator[](KEY key)
+T & Map<KEY, T>::operator[](KEY key)
 {
 
     Map::Iterator iter;
@@ -575,7 +575,7 @@ T & ::Map<KEY, T>::operator[](KEY key)
 // output the structure of tree. The tree is output as "lying down"
 // in which _root is the LEFT most Elem.
 template <typename KEY, typename T>
-void Map<KEY, T>::printTree(ostream &out, int level, Elem *p) const
+void Map<KEY, T>::printTree(std::ostream &out, int level, Elem *p) const
 {
     int i;
     if (p)
@@ -593,7 +593,7 @@ void Map<KEY, T>::printTree(ostream &out, int level, Elem *p) const
 
 // outputs information in tree in inorder traversal order
 template <typename KEY, typename T>
-ostream &Map<KEY, T>::dump(ostream &out) const
+std::ostream &Map<KEY, T>::dump(std::ostream &out) const
 {
     if (_root == _root->left)
     { // tree empty
@@ -605,7 +605,7 @@ ostream &Map<KEY, T>::dump(ostream &out) const
 
 // outputs using overloaded << operator
 template <typename KEY, typename T>
-ostream &operator<<(ostream &out, const Map<KEY, T> &v)
+std::ostream &operator<<(std::ostream &out, const Map<KEY, T> &v)
 {
     v.dump(out);
     return out;
