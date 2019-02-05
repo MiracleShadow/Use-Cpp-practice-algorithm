@@ -9,10 +9,12 @@ Required
 * C/C++
 * C/C++ Clang Command Adapter
 * Code Runner
+* LeetCode
 
 Optional
 * Markdown All in One
 * Chinese (Simplified) Language Pack for Visual Studio Code
+* Todo Tree
 
 ## How to calculate program running time
 1. Compile the timer.cpp to get `timer.exe`
